@@ -30,45 +30,23 @@
     },
     methods: {
       //处理登录
-      handleLogin () {
-        this.$http.post('login', this.formData)
-          .then((response) => {
-            /*
-             *{
-                "data": {
-                    "id": 500,
-                    "rid": 30,
-                    "username": "admin",
-                    "mobile": "12345678",
-                    "email": "adsfad@qq.com",
-                    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjozMCwiaWF0IjoxNTg5ODkzNDkyLCJleHAiOjE1ODk5Nzk4OTJ9.I4QzuG-9msk4rFUam14Qy09JyvCHQNIlz6dkXekTveE"
-                },
-                "meta": {
-                    "msg": "登录成功",
-                    "status": 200
-                }
-              }
-             */
-            let status = response.data.meta.status;
-            let msg = response.data.meta.msg;
-            if (status === 200){
-              //登录成功，
-              // 提示
-              this.$message.success(msg);
-              // 获取token存储起来
-              let token=response.data.data.token;
-              window.sessionStorage.setItem("token",token);
-              // 跳转后台首页
-
-            }else{
-              //登录失败
-              this.$message.error(msg);
-            }
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+      async handleLogin () {
+        let response =await this.$http.post('login', this.formData);
+        let { meta:{msg,status} }=response.data;
+        if (status === 200){
+          //登录成功，
+          // 提示
+          this.$message.success(msg);
+          // 获取token存储起来
+          let token=response.data.data.token;
+          window.sessionStorage.setItem("token",token);
+          // 跳转后台首页
+        }else{
+          //登录失败
+          this.$message.error(msg);
+        }
       }
+
     }
   }
 </script>

@@ -42,7 +42,7 @@
           this.$message.success(msg)
           // 获取token存储起来
           let token = response.data.data.token
-          window.sessionStorage.setItem('token', token)
+          window.sessionStorage.setItem('token', token);
           // 跳转后台首页
           this.$router.push('/')
         } else {

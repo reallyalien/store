@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Login from '@/views/login'
 import Home from '@/views/home'
 import Users from '@/views/users/users'
+import Rights from '@/views/rights/rights'
+import Roles from '@/views/rights/roles'
+
 //extensions: ['.js', '.vue', '.json'],扩展名称，默认会按照这个顺序寻找，所以这里省略了后缀名称
 
 Vue.use(Router)
@@ -19,7 +22,9 @@ export default new Router({
       path: '/',
       component: Home,
       children: [
-        {name: 'users', path: '/users', component: Users}
+        {name: 'users', path: '/users', component: Users},
+        {name: 'rights', path: '/rights', component: Rights},
+        {name: 'roles', path: '/roles', component: Roles},
       ]
     }
   ]

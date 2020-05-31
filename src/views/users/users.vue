@@ -1,11 +1,7 @@
 <template>
     <el-card class="card">
         <!--面包屑组件  -->
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-            <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-        </el-breadcrumb>
+        <my-breadcrumb level1="用户管理" level2="用户列表"></my-breadcrumb>
         <!--搜索-->
         <el-row class="searchRow">
             <el-col :span="24">
@@ -22,6 +18,7 @@
                 border
                 style="width: 100%">
             <el-table-column
+                    label="#"
                     type="index"
                     width="50">
             </el-table-column>
@@ -50,8 +47,7 @@
             <el-table-column
                     prop="mg_state"
                     label="用户状态"
-                    width="80"
-            >
+                    width="80">
                 <template slot-scope="scope">
                     <el-switch
                             v-model="scope.row.mg_state"

@@ -6,12 +6,14 @@ import router from './router'//包的概念，默认有一个index.js或者packa
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/index.css'
-
+import MyBreadcrumb  from './components/MyBreadcrumb'//全局组件
 import moment from 'moment'
 
 import myAxios from '@/plugins/MyAxios'
 
 Vue.config.productionTip = false//不输出控制台相关信息
+//注册面包屑组件
+Vue.component(MyBreadcrumb.name,MyBreadcrumb)
 //时间过滤器格式化日期
 Vue.filter('fmtDate', (value, fmtString) => {
   return moment(value).format(fmtString)

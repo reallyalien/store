@@ -43,7 +43,7 @@
           // 获取token存储起来
           let token = response.data.data.token
           window.sessionStorage.setItem('token', token)
-          // 跳转后台首页
+          // 跳转后台首页,编程式导航
           this.$router.push('/')
         } else {
           //登录失败

@@ -8,6 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/index.css'
 import MyBreadcrumb  from './components/MyBreadcrumb'//全局组件
 import moment from 'moment'
+import vueztree from 'vue-ztree-2.0/dist/vue-ztree-2.0.umd.min.js'
+import 'vue-ztree-2.0/dist/vue-ztree-2.0.css'
 
 import myAxios from '@/plugins/MyAxios'
 
@@ -21,6 +23,7 @@ Vue.filter('fmtDate', (value, fmtString) => {
 //注册插件
 Vue.use(ElementUI)
 Vue.use(myAxios)
+Vue.use(vueztree)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

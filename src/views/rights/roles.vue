@@ -84,13 +84,17 @@
         <!--点击分配权限，展开-->
         <el-dialog title="权限分配" :visible.sync="setRightsDialogFormVisible">
             <!--树形权限菜单-->
-            <el-tree :data="treeData" :props="defaultProps" node-key="id" :default-checked-keys="checkList"
+            <el-tree :data="treeData"
+                     :props="defaultProps"
+                     ref="tree"
+                     node-key="id"
+                     :default-checked-keys="checkList"
                      show-checkbox default-expand-all>
 
             </el-tree>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="setRightsDialogFormVisible = false">取 消</el-button>
-                <el-button type="primary" @click="handleSetRole()">确 定</el-button>
+                <el-button type="primary" @click="handleSetRights">确 定</el-button>
             </div>
         </el-dialog>
     </el-card>
@@ -114,7 +118,9 @@
           children: 'children'
         },
         //树中默认选中的节点的key
-        checkList: []
+        checkList: [],
+        //点击分配权限按钮，记录id
+        currentRoleId:'-1'
       }
     },
     created () {
@@ -126,7 +132,7 @@
         const {meta: {status, msg}} = response.data
         if (status === 200) {
           this.tableData = response.data.data
-          this.loading = false;
+          this.loading = false
         } else {
           this.$message.error(msg)
         }
@@ -145,13 +151,15 @@
       },
       //点击分配选项的按钮，打开对话框
       async handleOpenSetRightsDialog (role) {
+        //打开对话框
         this.setRightsDialogFormVisible = true
+        this.currentRoleId=role.id;
         //发送请求
         const response = await this.$http.get('rights/tree ')
         this.treeData = response.data.data
         //设置当前角色的权限id存储
         //先清空结束
-        this.checkList=[];
+        this.checkList = []
         role.children.forEach((level1) => {
           level1.children.forEach((level2) => {
             level2.children.forEach((level3) => {
@@ -159,6 +167,26 @@
             })
           })
         })
+      },
+      //点击确定按钮，分配权限
+      async handleSetRights(){
+        //点击分配权限按钮，获取roleId
+        //权限的id列表
+        let checkedKeys = this.$refs.tree.getCheckedKeys();
+        let halfCheckedKeys = this.$refs.tree.getHalfCheckedKeys();
+        // let ks = checkedKeys.concat(halfCheckedKeys);
+        let arr=[...checkedKeys,...halfCheckedKeys];
+        const response=await this.$http.post(`roles/${this.currentRoleId}/rights`,
+          {rids:arr.join(',')});
+        const {meta:{status,msg}}=response.data;
+        if (status === 200){
+          this.$message.success(msg);
+          this.setRightsDialogFormVisible=false;
+          //更新表格数据
+          this.loadData();
+        }else {
+          this.$message.error(msg);
+        }
       }
     }
   }

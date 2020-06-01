@@ -58,14 +58,14 @@
         menus:[]
       }
     },
-    beforeCreate () {
-      let token = window.sessionStorage.getItem('token')
-      if (!token) {
-        //没有token，需要登录
-        this.$message.warning('请先登录')
-        this.$router.push('/login')
-      }
-    },
+    // beforeCreate () {
+    //   let token = window.sessionStorage.getItem('token')
+    //   if (!token) {
+    //     //没有token，需要登录
+    //     this.$message.warning('请先登录')
+    //     this.$router.push('/login')
+    //   }
+    // },
     created () {
       this.loadMenus();
     },

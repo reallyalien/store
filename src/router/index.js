@@ -5,6 +5,8 @@ import Home from '@/views/home'
 import Users from '@/views/users/users'
 import Rights from '@/views/rights/rights'
 import Roles from '@/views/rights/roles'
+import Categories from '@/views/goods/categories'
+import Goods from '@/views/goods/goods'
 import fr from 'element-ui/src/locale/lang/fr'
 import el from 'element-ui/src/locale/lang/el'
 //导入message
@@ -29,6 +31,8 @@ const router=new Router({
         {name: 'users', path: '/users', component: Users},
         {name: 'rights', path: '/rights', component: Rights},
         {name: 'roles', path: '/roles', component: Roles},
+        {name: 'categories', path: '/categories', component: Categories},
+        {name: 'goods', path: '/goods', component: Goods},
       ]
     }
   ]

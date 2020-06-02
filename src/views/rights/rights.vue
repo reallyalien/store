@@ -63,8 +63,5 @@
 </script>
 
 <style scoped>
-    .card {
-        height: 100%;
-        overflow: auto;
-    }
+
 </style>

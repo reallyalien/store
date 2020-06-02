@@ -39,25 +39,25 @@
 <script>
   export default {
     name: 'rights',
-    data(){
+    data () {
       return {
-        tableData:[]
+        tableData: []
       }
     },
     created () {
       //组件创建完毕，发送请求
-      this.loadData();
+      this.loadData()
     },
-    methods:{
-        async loadData(){
-          const response =await this.$http.get('rights/list');
-          const {meta:{status,msg}}=response.data;
-          if (status === 200){
-            this.tableData=response.data.data;
-          }else{
-            this.$message.error(msg);
-          }
+    methods: {
+      async loadData () {
+        const response = await this.$http.get('rights/list')
+        const {meta: {status, msg}} = response.data
+        if (status === 200) {
+          this.tableData = response.data.data
+        } else {
+          this.$message.error(msg)
         }
+      }
     }
   }
 </script>

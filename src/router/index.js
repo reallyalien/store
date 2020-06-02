@@ -7,6 +7,8 @@ import Rights from '@/views/rights/rights'
 import Roles from '@/views/rights/roles'
 import fr from 'element-ui/src/locale/lang/fr'
 import el from 'element-ui/src/locale/lang/el'
+//导入message
+import {Message} from 'element-ui'
 
 //extensions: ['.js', '.vue', '.json'],扩展名称，默认会按照这个顺序寻找，所以这里省略了后缀名称
 
@@ -41,6 +43,8 @@ router.beforeEach((to,from,next)=>{
     if (!token){
       //跳转到登录
       router.push('/login');
+      //提示
+      Message.warning("请先登录");
       return;//没有token别走下面逻辑
     }
   }

@@ -7,3 +7,13 @@ html, body {
     height: 100%;
     overflow: auto;
 }
+/*当前类样式并没有定义在组件内，所以不能写在组件内部*/
+.el-step__title {
+    font-size: 13px;
+    line-height: 38px;
+}
+
+.ql-editor{
+    height: 400px;
+}
+

@@ -8,6 +8,7 @@ import Roles from '@/views/rights/roles'
 import Categories from '@/views/goods/categories'
 import Goods from '@/views/goods/goods'
 import GoodsAdd from '@/views/goods/goodsAdd'
+import Params from '@/views/goods/params'
 import fr from 'element-ui/src/locale/lang/fr'
 import el from 'element-ui/src/locale/lang/el'
 //导入message
@@ -35,6 +36,7 @@ const router=new Router({
         {name: 'categories', path: '/categories', component: Categories},
         {name: 'goods', path: '/goods', component: Goods},
         {name: 'goodsAdd', path: '/goods/add', component: GoodsAdd},
+        {name: 'params', path: '/params', component: Params},
       ]
     }
   ]

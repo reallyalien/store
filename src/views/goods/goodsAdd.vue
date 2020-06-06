@@ -36,6 +36,7 @@
                         <el-input v-model="form.goods_number"></el-input>
                     </el-form-item>
                     <el-form-item label="商品分类">
+                        {{ selectOptions }}
                         <el-cascader
                                 placeholder="请选择商品分类"
                                 clearable

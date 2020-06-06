@@ -27,7 +27,7 @@
                         style="height: 100%"
                         unique-opened
                         router
-                        default-active="/users">
+                        default-active="">
                     <el-submenu
                             v-for="item in menus" :key="item.id"
                             :index="item.id+''">

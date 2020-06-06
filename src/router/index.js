@@ -1,16 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/login'
-import Home from '@/views/home'
-import Users from '@/views/users/users'
-import Rights from '@/views/rights/rights'
-import Roles from '@/views/rights/roles'
-import Categories from '@/views/goods/categories'
-import Goods from '@/views/goods/goods'
-import GoodsAdd from '@/views/goods/goodsAdd'
-import Params from '@/views/goods/params'
-import fr from 'element-ui/src/locale/lang/fr'
-import el from 'element-ui/src/locale/lang/el'
+
+const Login = () =>import('@/views/login');
+const Home = () =>import('@/views/home');
+const Users = () =>import('@/views/users/users');
+const Rights = () =>import('@/views/rights/rights');
+const Roles = () =>import('@/views/rights/roles');
+const Categories = () =>import('@/views/goods/categories');
+const Goods = () =>import('@/views/goods/goods');
+const GoodsAdd = () =>import('@/views/goods/goodsAdd');
+const Params = () =>import('@/views/goods/params');
+const Orders = () =>import('@/views/order/orders');
+const Reports = () =>import('@/views/report/reports');
+
+// import fr from 'element-ui/src/locale/lang/fr'
+// import el from 'element-ui/src/locale/lang/el'
 //导入message
 import {Message} from 'element-ui'
 
@@ -37,6 +41,8 @@ const router=new Router({
         {name: 'goods', path: '/goods', component: Goods},
         {name: 'goodsAdd', path: '/goods/add', component: GoodsAdd},
         {name: 'params', path: '/params', component: Params},
+        {name: 'orders', path: '/orders', component: Orders},
+        {name: 'reports', path: '/reports', component: Reports},
       ]
     }
   ]

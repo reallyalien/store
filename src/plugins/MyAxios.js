@@ -1,5 +1,6 @@
 import axios from 'axios'
-
+import {Message} from 'element-ui'
+import el from 'element-ui/src/locale/lang/el'
 //插件必须提供一个install方法
 const MyAxios = {}
 MyAxios.install = function (Vue) {
@@ -25,6 +26,12 @@ MyAxios.install = function (Vue) {
 // 添加响应拦截器
   axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
+    const {meta:{status,msg}}=response.data;
+    if (status === 200 || status ===201){
+
+    }else{
+      Message.error(msg);
+    }
     return response
   }, function (error) {
     // 对响应错误做点什么

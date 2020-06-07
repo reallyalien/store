@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'//包的概念，默认有一个index.js或者package.json
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/index.css'
 import MyBreadcrumb  from './components/MyBreadcrumb'//全局组件
 import moment from 'moment'

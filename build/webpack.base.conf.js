@@ -20,6 +20,18 @@ const createLintingRule = () => ({
 })
 
 module.exports = {
+  //配置cdn
+  externals: {
+    //前面的属性是main.js当中的import Vue from 'vue'
+    //后面的值，是我们在页面上导入script标签之后，在window下生成的属性
+    //比如说导入vue之后 new window.Vue()
+    vue:'Vue',
+    echarts:'echarts',
+    axios:'axios',
+    moment:'moment',
+    'vue-router':'VueRouter',
+    'element-ui':'ELEMENT'
+  },
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'

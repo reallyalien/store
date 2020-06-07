@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+//导入message
+import {Message} from 'element-ui'
 const Login = () =>import('@/views/login');
 const Home = () =>import('@/views/home');
 const Users = () =>import('@/views/users/users');
@@ -15,8 +16,7 @@ const Reports = () =>import('@/views/report/reports');
 
 // import fr from 'element-ui/src/locale/lang/fr'
 // import el from 'element-ui/src/locale/lang/el'
-//导入message
-import {Message} from 'element-ui'
+
 
 //extensions: ['.js', '.vue', '.json'],扩展名称，默认会按照这个顺序寻找，所以这里省略了后缀名称
 

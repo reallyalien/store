@@ -112,6 +112,7 @@
         <!--编辑用户的对话框-->
         <el-dialog title="编辑用户" :visible.sync="editUserDialogFormVisible">
             <el-form :model="form" label-width="80px" ref="editForm">
+                <!--prop属性用来校验表单-->
                 <el-form-item label="用户名" prop="username">
                     <el-input v-model="form.username" autocomplete="off" disabled></el-input>
                 </el-form-item>
@@ -254,7 +255,7 @@
             if (status === 201) {
               this.$message.success(msg)
               //关闭对话框
-              this.addUserDialogFormVisibl = false
+              this.addUserDialogFormVisible = false
               //重新加载数据
               this.loadData(this.pagenum, this.pagesize)
               //清空文本框

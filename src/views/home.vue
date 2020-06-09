@@ -1,6 +1,7 @@
 <template>
+
     <el-container class="container">
-        <!--    header-->
+        <!--包含header时，父容器的子元素会竖直排列-->
         <el-header class="header">
             <el-row>
                 <el-col :span="4">

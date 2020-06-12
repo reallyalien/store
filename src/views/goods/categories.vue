@@ -9,25 +9,34 @@
             </el-col>
         </el-row>
         <!--表格-->
+        <!--使用element-ui的表格属性也可以实现-->
         <el-table
                 v-loading="loading"
                 :data="tableData"
                 stripe
                 border
-                style="width: 100%">
+                style="width: 100%"
+        row-key="cat_id"
+        :tree-props="{children: 'children',hasChildren: 'hasChildren'}">
             <!--标签名与组件名称一致-->
-            <el-table-tree-column
-                    file-icon="icon icon-file"
-                    folder-icon="icon icon-folder"
-                    prop="cat_name"
-                    label="分类名称"
-                    width="400"
-                    treeKey="cat_id"
-                    parentKey="cat_pid"
-                    levelKey="cat_level"
-                    childKey="children">
+<!--            <el-table-tree-column-->
+<!--                    file-icon="icon icon-file"-->
+<!--                    folder-icon="icon icon-folder"-->
+<!--                    prop="cat_name"-->
+<!--                    label="分类名称"-->
+<!--                    width="400"-->
+<!--                    treeKey="cat_id"-->
+<!--                    parentKey="cat_pid"-->
+<!--                    levelKey="cat_level"-->
+<!--                    childKey="children">-->
 
-            </el-table-tree-column>
+<!--            </el-table-tree-column>-->
+            <el-table-column
+                label="分类名称"
+            prop="cat_name"
+            width="300px">
+
+            </el-table-column>
             <el-table-column
                     label="级别"
                     width="150">
@@ -150,6 +159,7 @@
           label: 'cat_name',
           children: 'children'
         },
+        //级联下拉框绑定的多级下拉选项
         catIds: [],
         //编辑商品分类弹框的显示与隐藏
         editCategoriedDialogFormVisible: false
@@ -196,8 +206,9 @@
         //this.catIds.length === 0  要添加的是一级分类
         //this.catIds.length === 1  要添加的是二级分类
         //this.catIds.length === 2  要添加的是三级分类
-        //设置级别level
+        //设置级别level，三级分类level是2
         this.form.cat_level = this.catIds.length
+        //设置所要添加分类的父id
         if (this.catIds.length === 0) {
           this.form.cat_pid = 0
         } else if (this.catIds.length === 1) {

@@ -104,6 +104,7 @@
   import {  quillEditor } from 'vue-quill-editor';
 
   export default {
+    //局部组件
     components:{
       quillEditor
     },
@@ -252,4 +253,5 @@
 </script>
 
 <style scoped>
+
 </style>

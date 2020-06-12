@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 //导入message
+//路由懒加载
 import {Message} from 'element-ui'
 const Login = () =>import('@/views/login');
 const Home = () =>import('@/views/home');

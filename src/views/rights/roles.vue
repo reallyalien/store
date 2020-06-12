@@ -89,7 +89,8 @@
                      ref="tree"
                      node-key="id"
                      :default-checked-keys="checkList"
-                     show-checkbox default-expand-all>
+                     show-checkbox default-expand-all
+            @node-click="nodeClick">
 
             </el-tree>
             <div slot="footer" class="dialog-footer">
@@ -160,6 +161,7 @@
         //设置当前角色的权限id存储
         //先清空结束
         this.checkList = []
+        //只放三级权限即可，父级自然会被选中
         role.children.forEach((level1) => {
           level1.children.forEach((level2) => {
             level2.children.forEach((level3) => {
@@ -172,10 +174,10 @@
       async handleSetRights(){
         //点击分配权限按钮，获取roleId
         //权限的id列表
-        let checkedKeys = this.$refs.tree.getCheckedKeys();
+        let checkedKeys = this.$refs.tree.getCheckedKeys();//全部被选中的节点，包括半选
         let halfCheckedKeys = this.$refs.tree.getHalfCheckedKeys();
         // let ks = checkedKeys.concat(halfCheckedKeys);
-        let arr=[...checkedKeys,...halfCheckedKeys];
+        let arr=[...checkedKeys,...halfCheckedKeys];//展开表达式
         const response=await this.$http.post(`roles/${this.currentRoleId}/rights`,
           {rids:arr.join(',')});
         const {meta:{status,msg}}=response.data;
@@ -187,6 +189,11 @@
         }else {
           this.$message.error(msg);
         }
+      },
+      //点击树的节点的操作
+      nodeClick: function (obj, node, a) {
+        let checkedKeys = this.$refs.tree.getCheckedKeys()
+        console.log(checkedKeys);
       }
     }
   }

@@ -5,7 +5,7 @@
         <!--搜索-->
         <el-row class="searchRow">
             <el-col :span="24">
-                <el-input placeholder="请输入内容" v-model="searchValue" class="searchInput" clearable>
+                <el-input placeholder="请输入内容" v-model="searchValue" class="searchInput" clearable @keyup.enter.native="handleSearch">
                     <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
                 </el-input>
                 <el-button type="primary" @click="clearData">添加</el-button>

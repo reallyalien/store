@@ -232,8 +232,9 @@
       },
       showInput () {
         this.inputVisible = true
-        this.$nextTick(_ => {
+        this.$nextTick(() => {
           //将此回调函数延迟到下次dom更新时才去执行。
+          //等input打开之后然后去更新
           this.$refs.saveTagInput.$refs.input.focus();
         })
       }

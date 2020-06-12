@@ -268,9 +268,6 @@
           this.$message.error(msg)
         }
 
-      },
-      adddd(){
-        console.log("测试git")
       }
     }
   }

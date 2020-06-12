@@ -268,7 +268,8 @@
           this.$message.error(msg)
         }
 
-      }
+      },
+      adddd();
     }
   }
 </script>

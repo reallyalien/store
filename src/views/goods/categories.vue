@@ -271,7 +271,7 @@
       },
       adddd(){
         console.log("测试git")
-      };
+      }
     }
   }
 </script>
